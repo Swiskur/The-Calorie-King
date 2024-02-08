@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  {% load static %}
+<head>
+
+{% load static %}
+<link type="text/css" rel="stylesheet" href="{% static 'css/main.css' %}">
+<title> Calorie King </title>
+    <meta charset="UTF-8">
+    
+</head>
+<body>
+<h1> Calorie King</h1>
+<table style="width:100%">
+    <table style="width:100%">
+        <tr>
+          <th><a href= "http://127.0.0.1:8000/"> Home </a></th>
+          <th><a href= "http://127.0.0.1:8000/search/"> Search </a></th>
+          <th><a href= "http://127.0.0.1:8000/counter/"> Counter </a></th>
+          <th> <a href= "http://127.0.0.1:8000/contact/"> Contact </a></th>
+        </tr>
+    </table>
+
+<h3>Register</h3>
+
+<form method="POST" action="">
+    {% csrf_token %}
+    {{reg}}
+
+    <input type="submit" name="Create">
+
+
+</form>
+<br>
+<a href= "http://127.0.0.1:8000/login/" class="center">Already have an account? Login here</a>
+</body>
+</html>

@@ -1,0 +1,103 @@
+h1{
+
+
+    text-align: center;
+    color: black;
+    padding: 5px;
+    margin: 5px;
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 100px;
+    font-weight: bold;
+    letter-spacing: -1px;
+  }
+  body{
+    background-color: #C8C8C8;
+  }
+  table, th {
+    border:5px black;
+    height: 70px;
+  }
+  p {
+    text-align: center;
+    font-size:25px;
+    font-family:'Arial';
+  }
+  h2{
+    color: black;
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 35px;
+  }
+  li{
+    font-size:20px;
+    font-family:'Arial';
+  }
+  h3{
+    color: black;
+  }
+  table{
+    background-color: orange;
+  }
+  a:link {
+    color: black;
+    background-color: transparent;
+    text-decoration: none;
+    font-size: 35px;
+    font-family: 'Helvetica Neue', sans-serif;
+  }
+
+  a:visited {
+    color: black;
+    background-color: transparent;
+    text-decoration: none;
+    font-size: 35px;
+    font-family: 'Helvetica Neue', sans-serif;
+
+  }
+
+  a:hover {
+    color: black;
+    background-color: transparent;
+    text-decoration: underline;
+    font-size: 35px;
+    font-family: 'Helvetica Neue', sans-serif;
+
+  }
+
+  a:active {
+    color: black;
+    background-color: transparent;
+    text-decoration: underline;
+    font-size: 35px;
+    font-family: 'Helvetica Neue', sans-serif;
+
+  }
+  .self {
+    display: block;
+    margin-left: auto;
+    margin-right: 30px;
+    margin-top: 100px;
+    width: 15%;
+
+
+  }
+  .left {
+      float: left;
+  }
+  .right {
+      float: right;
+  }
+  .th{
+    border: 1px solid black;
+  }
+  .td{
+    border: 1px solid black;
+  }
+ .center{
+    text-align: center;
+ }
+ ul.center{
+    border: 5px solid #000; 
+    padding: 10px;
+    margin: 5px; 
+    list-style-type: none; 
+ }

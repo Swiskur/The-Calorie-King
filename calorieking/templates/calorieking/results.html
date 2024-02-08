@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  {% load static %}
+<head>
+  {% load static %}
+  <link type="text/css" rel="stylesheet" href="{% static 'css/main.css' %}">
+<title> Calorie King </title>
+    <meta charset="UTF-8">
+    
+</head>
+<body>
+<h1> Calorie King</h1>
+<a href="http://127.0.0.1:8000/logout/" class="right">Logout</a>
+<a href= "http://127.0.0.1:8000/signup/" class="right">Sign Up/</a>
+<a href= "http://127.0.0.1:8000/login/" class="right">Login/</a>
+<table style="width:100%">
+  <tr>
+    <th><a href= "http://127.0.0.1:8000/"> Home </a></th>
+    <th><a href= "http://127.0.0.1:8000/search/"> Search </a></th>
+    <th><a href= "http://127.0.0.1:8000/counter/"> Counter </a></th>
+    <th> <a href= "http://127.0.0.1:8000/results/"> Results </a></th>
+    <th> <a href= "http://127.0.0.1:8000/contact/"> Contact </a></th>
+ </tr>
+</table>
+<h2>Calorie Results</h2>
+      <table style="width:100%; background-color: whitesmoke";>
+        <tr>
+          <th class="th">Total Calories</th>
+          <th class="th">Calorie Goal</th>
+          <th class = "th">Date</th>
+        </tr>
+      <tbody>
+        {% for result in calorie_results %}
+          <tr>
+            <td class="td"> {{result.cal_result}}</td>
+            <td class="td"> {{result.goal}}</td>
+            <td class="td"> {{result.month}}/{{result.day}}/{{result.year}}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <br>
+    <h2>Macro Results</h2>
+    <table style="width:100%; background-color: whitesmoke";>
+      <tr>
+        <th class="th">Total Carbohydrates</th>
+        <th class="th">Total Protein</th>
+      </tr>
+    <tbody>
+      {% for result in macro_results %}
+        <tr>
+          <td class="td"> {{result.carb_result}}</td>
+          <td class="td"> {{result.pro_result}}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</body>
+</html>

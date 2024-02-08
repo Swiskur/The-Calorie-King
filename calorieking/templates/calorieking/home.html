@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+{% load static %}
+<link type="text/css" rel="stylesheet" href="{% static 'css/main.css' %}">
+<title> Calorie King </title>
+    <meta charset="UTF-8">
+    
+</head>
+<body>
+<h1> Calorie King</h1>
+<a href="http://127.0.0.1:8000/logout/" class="right">Logout</a>
+<a href= "http://127.0.0.1:8000/signup/" class="right">Sign Up/</a>
+<a href= "http://127.0.0.1:8000/login/" class="right">Login/</a>
+<table style="width:100%">
+  <tr>
+    <th><a href= "http://127.0.0.1:8000/"> Home </a></th>
+    <th><a href= "http://127.0.0.1:8000/search/"> Search </a></th>
+    <th><a href= "http://127.0.0.1:8000/counter/"> Counter </a></th>
+    <th> <a href= "http://127.0.0.1:8000/results/"> Results </a></th>
+    <th> <a href= "http://127.0.0.1:8000/contact/"> Contact </a></th>
+ </tr>
+</table>
+<br>
+<div style="background-color: #f5fffa; padding: 15px;">
+<p>
+Hello and welcome to Calorie King, the web app where you can keep track of your calorie intake! Our main goal here is to make sure you have all of the necessary tools to make goals, calculate your calories and become the best version of yourself.
+Below is the features and how to use the app. Welcome and we hope you enjoy!
+
+</p>
+<br>
+<h2> How to use Calorie King </h2>
+<ul>
+    
+    <li> Go to our Search and get calories for the specific foods you have eaten</li>
+    <li> Enter your daily calorie goal</li>
+    <li> Enter your calorie totals from each meal, including protein and fat</li>
+    <li> Keep track of your daily totals on the results page!</li>
+</ul>
+</div>
+<br>
+<div id="quoteDisplay" style="font-size:30px">
+</div>
+<button onclick="newQuote()">Nutrition Tip</button>
+<script> 
+var quotes = [
+'To lose weight you must burn more calories than you eat',
+'Drinking water will keep you hydrated and is free of calories and sugar',
+'Swimming laps for thirty minutes can burn over two hundred calories',
+'Whole eggs are a good source of protein and an excellent source of healthy fats',
+'Drinking whole milk is a good way to get in good amounts of protein and calories for gaining weight',
+'Counting calories is one of the best ways to lose or gain weight',
+'Stop eating high calorie items when cutting calories',
+'Carbohydrates fats and proteins are types of nutrients that are the main energy sources for your body',
+'Stored calories will stay in your body as fat unless you use them up',
+'The most accurate way to determine how much you are eating is to weigh your food',
+'Read food labels because they contain lots of useful information for calorie counting', 
+'Adults typically require between 1600 and 3000 calories per day',
+'Recommended daily calorie intakes in the US are around 2500 for men and 2000 for women',
+'Eating a big breakfast could help with weight reduction and maintenance',
+'Eating regularly can help you burn calories more effectively and helps prevent snacking',
+]
+
+function newQuote() {
+var randomNumber = Math.floor(Math.random()*(quotes.length));
+document.getElementById('quoteDisplay').innerHTML = quotes[randomNumber];
+}</script>
+<img src="https://images.pexels.com/photos/70497/pexels-photo-70497.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="Burger" width="500" height="300" class= "left" style="margin-top: 100px;">
+<img src="https://images.pexels.com/photos/1633525/pexels-photo-1633525.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Sub" class= "right" width="500" height="300" style="margin-top: 100px;">
+</body>
+</html>

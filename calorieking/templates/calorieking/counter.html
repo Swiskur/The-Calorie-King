@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+  {% load static %}
+<head>
+{% load static %}
+<link type="text/css" rel="stylesheet" href="{% static 'css/main.css' %}">
+<title> Calorie King </title>
+    <meta charset="UTF-8">
+    
+</head>
+<body>
+<h1> Calorie King</h1>
+<a href="http://127.0.0.1:8000/logout/" class="right">Logout</a>
+<a href= "http://127.0.0.1:8000/signup/" class="right">Sign Up/</a>
+<a href= "http://127.0.0.1:8000/login/" class="right">Login/</a>
+<table style="width:100%">
+  <tr>
+    <th><a href= "http://127.0.0.1:8000/"> Home </a></th>
+    <th><a href= "http://127.0.0.1:8000/search/"> Search </a></th>
+    <th><a href= "http://127.0.0.1:8000/counter/"> Counter </a></th>
+    <th> <a href= "http://127.0.0.1:8000/results/"> Results </a></th>
+    <th> <a href= "http://127.0.0.1:8000/contact/"> Contact </a></th>
+ </tr>
+</table>
+<br>
+<div id="quoteDisplay" style="font-size:30px">
+</div>
+<button onclick="newQuote()">Nutrition Tip</button>
+<br><br><br>
+<img src="https://images.pexels.com/photos/769289/pexels-photo-769289.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="Burger" width="500" height="300" class= "right" style="margin-top: 100px;">
+
+
+<form method="POST">  
+  <h2 style= "position: absolute; top: 300px;">Date</h2>
+  {% csrf_token %}
+  <div class="form-group" style="position: absolute; top: 380px;">
+    <label for="examplemeal1">Month</label>
+    <input type="number" class="form-control" name="month1" placeholder="Enter Month: 12" required>
+  </div>
+  <div class="form-group" style="position: absolute; top: 400px;">
+    <label for="examplemeal2">Day</label>
+    <input type="number" class="form-control" name="day1" placeholder="Enter Day: 25" required>
+  </div>
+  <div class="form-group" style="position: absolute; top: 420px;">
+    <label for="examplemeal3">Year</label>
+    <input type="number" class="form-control" name="year1" placeholder="Enter Year: 23" required>
+  </div>
+<h3 style= "position: absolute; top: 440px;">The date for today is: {{month_result}}/{{day_result}}/{{year_result}}</h3>
+  <h2 style= "position: absolute; top: 520px;">Calorie Goal</h2>
+  {% csrf_token %}
+  <div class="form-group" style="position: absolute; top: 600px;">
+    <label for="examplegoal1">Calorie Goal</label>
+    <input type="number" name="goal1" class="form-control">
+  </div>
+<h3 style= "position: absolute; top: 680px;">Your Calorie Goal for today is: {{goal_result}}</h3> 
+
+  <h2 style="position: absolute; top: 760px;">Calories</h2>
+  {% csrf_token %}
+  <div class="form-group" style="position: absolute; top: 840px;">
+    <label for="examplemeal1">Meal 1</label>
+    <input type="number" class="form-control" name="meal1">
+  </div>
+  <div class="form-group" style="position: absolute; top: 860px;">
+    <label for="examplemeal2">Meal 2</label>
+    <input type="number" class="form-control" name="meal2" >
+  </div>
+  <div class="form-group" style="position: absolute; top: 880px;">
+    <label for="examplemeal3">Meal 3</label>
+    <input type="number" class="form-control" name="meal3" >
+  </div>
+            
+<h3 style="position: absolute; top: 960px;">Your total Calories for today is: {{cal_result}}</h3>   
+<br>
+<h2 style="position: absolute; top: 1020px;">Carbs</h2>
+
+    {% csrf_token %}
+
+    <div class="form-group" style="position: absolute; top: 1100px;">
+      <label for="exampleCarb1">Carbs Meal 1</label>
+      <input type="number" class="form-control" name="carb1">
+
+    </div>
+    <div class="form-group" style="position: absolute; top: 1120px;">
+      <label for="exampleCarb2"> Carbs Meal 2</label>
+      <input type="number" class="form-control" name="carb2" >
+    </div>
+    <div class="form-group" style="position: absolute; top: 1140px;">
+        <label for="exampleCarb3">Carbs Meal 3</label>
+        <input type="number" class="form-control" name="carb3" >
+    </div>
+          
+         
+<br>
+<h3 style="position: absolute; top: 1220px;">Your Carbohydrate intake for today is: {{carb_result}}</h3>   
+<br>
+<h2 style="position: absolute; top: 1300px;">Protein</h2>
+
+  {% csrf_token %}
+  <div class="form-group" style="position: absolute; top: 1380px;">
+    <label for="exampleProtein1">Protein Meal 1</label>
+    <input type="number" class="form-control" name="pro1">
+  </div>
+  <div class="form-group" style="position: absolute; top: 1400px;">
+    <label for="exampleProtein2">Protein Meal 2</label>
+    <input type="number" class="form-control" name="pro2" >
+  </div>
+  <div class="form-group" style="position: absolute; top: 1420px;">
+    <label for="exampleProtein3">Protein Meal 3</label>
+    <input type="number" class="form-control" name="pro3" >
+  </div>
+<button type="submit" name="submit" style="position: absolute; top: 1580px;">Calculate</button>
+<br>
+</form>
+<h3 style="position: absolute; top: 1500px;">Your Protein intake for today is: {{pro_result}}</h3>
+<script> 
+var quotes = [
+'To lose weight you must burn more calories than you eat',
+'Drinking water will keep you hydrated and is free of calories and sugar',
+'Swimming laps for thirty minutes can burn over two hundred calories',
+'Whole eggs are a good source of protein and an excellent source of healthy fats',
+'Drinking whole milk is a good way to get in good amounts of protein and calories for gaining weight',
+'Counting calories is one of the best ways to lose or gain weight',
+'Stop eating high calorie items when cutting calories',
+'Carbohydrates fats and proteins are types of nutrients that are the main energy sources for your body',
+'Stored calories will stay in your body as fat unless you use them up',
+'The most accurate way to determine how much you are eating is to weigh your food',
+'Read food labels because they contain lots of useful information for calorie counting', 
+'Adults typically require between 1600 and 3000 calories per day',
+'Recommended daily calorie intakes in the US are around 2500 for men and 2000 for women',
+'Eating a big breakfast could help with weight reduction and maintenance',
+'Eating regularly can help you burn calories more effectively and helps prevent snacking',
+]
+
+function newQuote() {
+var randomNumber = Math.floor(Math.random()*(quotes.length));
+document.getElementById('quoteDisplay').innerHTML = quotes[randomNumber];
+}</script>
+
+
+<table class="right" style="width:25%; background-color: whitesmoke";>
+  <tr>
+    <th class="th">Food</th>
+    <th class="th">Calories</th>
+    <th class="th">Protein</th>
+    <th class = "th">Carbs</th>
+  </tr>
+<tbody>
+  {% for api_data in counter_data %}
+    <tr>
+      <td class="td"> Food: {{ api_data.query }}</td>
+      <td class="td"> Calories: {{ api_data.calories }}</td>
+      <td class="td"> Protein: {{api_data.protein}}</td>
+      <td class="td"> Carbohydrates: {{ api_data.carbs }}</td>
+    </tr>
+  {% endfor %}
+</tbody>
+</table>
+
+</tbody>
+</table>
+</body>
+</html>
