@@ -52,7 +52,8 @@ def search(request):
         return render(request,'calorieking/search.html',{'api':api,})
     return render(request,'calorieking/search.html')
 
-
+def burner_search(request): 
+    return render(request, "calorieking/burner_search.html")
 def Goal(goal1):
     goal_result = int(float(goal1))
     return goal_result
@@ -117,12 +118,14 @@ def counter(request):
         return render(request,'calorieking/counter.html',{'cal_result':cal_result, 'carb_result':carb_result, 'pro_result':pro_result, 'goal_result':goal_result, 'month_result':month_result, 'day_result': day_result, 'year_result':year_result,})
      return render(request,'calorieking/counter.html',{'counter_data': counter_data})
 
-
+def burner_counter(request):
+    return render(request, "calorieking/burner_calculator.html")
 @login_required(login_url='login')
 def results(request):
     calorie_results = CalorieResult.objects.all().order_by('-id')
     macro_results = Macros.objects.all().order_by('-id')
     return render(request, "calorieking/results.html", {'calorie_results':calorie_results, 'macro_results':macro_results})
-
+def burner_results(request):
+    return render(request, "calorieking/burner_results.html")
 def contact(request):
     return render(request, "calorieking/contact.html")
