@@ -125,6 +125,7 @@ def results(request):
     calorie_results = CalorieResult.objects.all().order_by('-id')
     macro_results = Macros.objects.all().order_by('-id')
     return render(request, "calorieking/results.html", {'calorie_results':calorie_results, 'macro_results':macro_results})
+@login_required(login_url='login')
 def burner_results(request):
     return render(request, "calorieking/burner_results.html")
 def contact(request):
