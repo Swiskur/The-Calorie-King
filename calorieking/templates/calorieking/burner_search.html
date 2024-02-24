@@ -27,5 +27,21 @@
  </tr>
 </table>
 
+<form method="POST">
+  {% csrf_token %}
+  <div class="center">
+    <input type="text" name="query" placeholder="search for Activities" required>
+    <button type="submit">Find Calories Burned</button>
+  </div>
+
+
+  <li>
+    <ul class="center"> Calories per Hour:</ul>
+    <ul class="center"> Duration in Minutes:</ul>
+    <ul class="center"> Carbohydrates: </ul>
+    <ul class="center"> Total Calories: </ul>
+    
+  </li>
+
 </body>
 </html>
