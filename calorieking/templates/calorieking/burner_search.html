@@ -27,6 +27,10 @@
  </tr>
 </table>
 <br>
+<div id="quoteDisplay" style="font-size:30px">
+</div>
+<button onclick="newQuote()">Calorie Burning Tip</button>
+<br>
 
 <form method="POST">
   {% csrf_token %}
@@ -35,13 +39,34 @@
     <button type="submit">Find Calories Burned</button>
   </div>
 
-
+</form>
   <li>
     <ul class="center"> Calories per Hour:</ul>
     <ul class="center"> Duration in Minutes:</ul>
     <ul class="center"> Total Calories: </ul>
     
   </li>
-
+  <script> 
+    var quotes = [
+    'Taking the stairs is an easy way to burn calories',
+    'Housework and Gardening are good ways to burn calories',
+    'Swimming laps for thirty minutes can burn over two hundred calories',
+    'Do your work standing rather than sitting',
+    'Take your dog on walks to burn calories regularly',
+    'Jump roping for 7 minutes can burn 100 calories',
+    'Backpack hiking for 1 hour can burn over 500 calories',
+    'Playing multiple sports is a good way to burn calories and have fun while doing so',
+    'Weight lifting is a great way to burn calories, whether for body building or just a light workout',
+    'Strength training is a great way to build muscle',
+    'Any and all movement will help burn calories', 
+    'Counting calories is a great way to see how many calories you should burn',
+    'Running at any intensity is great for burning calories',
+  
+    ]
+    
+    function newQuote() {
+    var randomNumber = Math.floor(Math.random()*(quotes.length));
+    document.getElementById('quoteDisplay').innerHTML = quotes[randomNumber];
+    }</script>
 </body>
 </html>

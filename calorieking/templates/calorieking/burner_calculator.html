@@ -26,6 +26,10 @@
     <th> <a href= "http://127.0.0.1:8000/contact/"> Contact </a></th>
  </tr>
 </table>
+
+<div id="quoteDisplay" style="font-size:30px">
+</div>
+<button onclick="newQuote()">Calorie Burning Tip</button>
 <img src="https://cdn.pixabay.com/photo/2017/07/02/19/24/dumbbells-2465478_1280.jpg" alt="Running" width="500" height="300" class= "right" style="margin-top: 100px;">
 <form method="POST">
   <h2 style= "position: absolute; top: 300px;">Date</h2>
@@ -42,56 +46,58 @@
     <label for="exampleburn3">Year</label>
     <input type="number" class="form-control" name="year2" placeholder="Enter Year: 23" required>
   </div>
-  <h2 style="position: absolute; top: 450px;">Calories Burned Goal</h2>
-  <div class="form-group" style="position: absolute; top: 520px;">
+  <h3 style= "position: absolute; top: 440px;">The date for today is:</h3>
+  <h2 style="position: absolute; top: 460px;">Calories Burned Goal</h2>
+  <div class="form-group" style="position: absolute; top: 530px;">
     <label for="examplegoal2">Calories Burned Goal</label>
     <input type="number" name="goal2" class="form-control">
   </div>
-
-  <h2 style="position: absolute; top: 550px;">Calories Burned</h2>
+  <h3 style= "position: absolute; top: 550px;"> Your Calories Burned Goal is: </h3>
+  <h2 style="position: absolute; top: 570px;">Calories Burned</h2>
   {% csrf_token %}
-  <div class="form-group" style="position: absolute; top: 620px;">
+  <div class="form-group" style="position: absolute; top: 640px;">
     <label for="exampleburn1">Burned 1</label>
     <input type="number" class="form-control" name="burn1">
   </div>
-  <div class="form-group" style="position: absolute; top: 640px;">
+  <div class="form-group" style="position: absolute; top: 660px;">
     <label for="exampleburn2">Burned 2</label>
     <input type="number" class="form-control" name="burn2" >
   </div>
-  <div class="form-group" style="position: absolute; top: 660px;">
+  <div class="form-group" style="position: absolute; top: 680px;">
     <label for="exampleburn3">Burned 3</label>
     <input type="number" class="form-control" name="burn3" >
   </div>
-  <div class="form-group" style="position: absolute; top: 680px;">
+  <div class="form-group" style="position: absolute; top: 700px;">
     <label for="exampleburn4">Burned 4</label>
     <input type="number" class="form-control" name="burn4" >
   </div>
-  <div class="form-group" style="position: absolute; top: 700px;">
+  <div class="form-group" style="position: absolute; top: 720px;">
     <label for="exampleburn5">Burned 5</label>
     <input type="number" class="form-control" name="burn5" >
   </div>
-  <div class="form-group" style="position: absolute; top: 720px;">
+  <div class="form-group" style="position: absolute; top: 740px;">
     <label for="exampleburn6">Burned 6</label>
     <input type="number" class="form-control" name="burn6" >
   </div>
-  <div class="form-group" style="position: absolute; top: 740px;">
+  <div class="form-group" style="position: absolute; top: 760px;">
     <label for="exampleburn7">Burned 7</label>
     <input type="number" class="form-control" name="burn7" >
   </div>
-  <div class="form-group" style="position: absolute; top: 760px;">
+  <div class="form-group" style="position: absolute; top: 780px;">
     <label for="exampleburn8">Burned 8</label>
     <input type="number" class="form-control" name="burn8" >
   </div>
-  <div class="form-group" style="position: absolute; top: 780px;">
+  <div class="form-group" style="position: absolute; top: 800px;">
     <label for="exampleburn9">Burned 9</label>
     <input type="number" class="form-control" name="burn9" >
   </div>
-  <div class="form-group" style="position: absolute; top: 800px;">
+  <div class="form-group" style="position: absolute; top: 820px;">
     <label for="exampleburn10">Burned 10</label>
     <input type="number" class="form-control" name="burn10" >
   </div>
 
 </form>
+<h3 style="position: absolute; top: 850px;">Your Total Calories Burned for today is:</h3>
 <br>
 <table class="right" style="width:25%; background-color: whitesmoke";>
   <tr>
@@ -100,6 +106,27 @@
     
   </tr>
 </table>
+<script> 
+  var quotes = [
+  'Taking the stairs is an easy way to burn calories',
+  'Housework and Gardening are good ways to burn calories',
+  'Swimming laps for thirty minutes can burn over two hundred calories',
+  'Do your work standing rather than sitting',
+  'Take your dog on walks to burn calories regularly',
+  'Jump roping for 7 minutes can burn 100 calories',
+  'Backpack hiking for 1 hour can burn over 500 calories',
+  'Playing multiple sports is a good way to burn calories and have fun while doing so',
+  'Weight lifting is a great way to burn calories, whether for body building or just a light workout',
+  'Strength training is a great way to build muscle',
+  'Any and all movement will help burn calories', 
+  'Counting calories is a great way to see how many calories you should burn',
+  'Running at any intensity is great for burning calories',
 
+  ]
+  
+  function newQuote() {
+  var randomNumber = Math.floor(Math.random()*(quotes.length));
+  document.getElementById('quoteDisplay').innerHTML = quotes[randomNumber];
+  }</script>
 </body>
 </html>
