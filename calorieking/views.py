@@ -126,9 +126,12 @@ def Month2(month2):
 def Day2(day2):
     day_result2 = int(float(day2))
     return day_result2
-def Year(year2):
+def Year2(year2):
     year_result2 = int(float(year2))
     return year_result2
+def CalBurnedAddition(burn1, burn2, burn3, burn4, burn5, burn6, burn7, burn8, burn9, burn10):
+    cal_burned_result = int(burn1) + int(burn2) + int(burn3) + int(burn4) + int(burn5) + int(burn6) + int(burn7) + int(burn8) + int(burn9) + int(burn10)
+    return cal_burned_result
 def burner_counter(request):
     return render(request, "calorieking/burner_calculator.html")
 @login_required(login_url='login')
