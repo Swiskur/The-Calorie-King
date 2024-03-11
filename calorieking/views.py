@@ -117,7 +117,18 @@ def counter(request):
         
         return render(request,'calorieking/counter.html',{'cal_result':cal_result, 'carb_result':carb_result, 'pro_result':pro_result, 'goal_result':goal_result, 'month_result':month_result, 'day_result': day_result, 'year_result':year_result,})
      return render(request,'calorieking/counter.html',{'counter_data': counter_data})
-
+def Goal2(goal2):
+    goal_result2 = int(float(goal2))
+    return goal_result2
+def Month2(month2):
+    month_result2 = int(float(month2))
+    return month_result2
+def Day2(day2):
+    day_result2 = int(float(day2))
+    return day_result2
+def Year(year2):
+    year_result2 = int(float(year2))
+    return year_result2
 def burner_counter(request):
     return render(request, "calorieking/burner_calculator.html")
 @login_required(login_url='login')
