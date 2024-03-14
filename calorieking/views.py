@@ -133,6 +133,28 @@ def CalBurnedAddition(burn1, burn2, burn3, burn4, burn5, burn6, burn7, burn8, bu
     cal_burned_result = int(burn1) + int(burn2) + int(burn3) + int(burn4) + int(burn5) + int(burn6) + int(burn7) + int(burn8) + int(burn9) + int(burn10)
     return cal_burned_result
 def burner_counter(request):
+    if request.method == 'POST':
+        goal2 = request.POST['goal2']
+        month2 = request.POST['month2']
+        day2 = request.POST['day2']
+        year2 = request.POST['year2']
+        burn1 = request.POST['burn1']
+        burn2 = request.POST['burn2']
+        burn3 = request.POST['burn3']
+        burn4 = request.POST['burn4']
+        burn5 = request.POST['burn5']
+        burn6 = request.POST['burn6']
+        burn7 = request.POST['burn7']
+        burn8 = request.POST['burn8']
+        burn9 = request.POST['burn9']
+        burn10 = request.POST['burn10']
+        if 'submit2' in request.POST:
+            goal_result2 = Goal2(goal2)
+            month_result2 = Month2(month2)
+            day_result2 = Day2(day2)
+            year_result2 = Year2(year2)
+            cal_burned_result = CalBurnedAddition(burn1, burn2, burn3, burn4, burn5, burn6, burn7, burn8, burn9, burn10)
+        return render(request, 'calorieking/burner_calculator.html', {'goal_result2':goal_result2, 'month_result2':month_result2, 'day_result2':day_result2, 'year_result2':year_result2, 'cal_burned_result':cal_burned_result,})
     return render(request, "calorieking/burner_calculator.html")
 @login_required(login_url='login')
 def results(request):
