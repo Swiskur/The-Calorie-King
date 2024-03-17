@@ -46,13 +46,13 @@
     <label for="exampleburn3">Year</label>
     <input type="number" class="form-control" name="year2" placeholder="Enter Year: 23" required>
   </div>
-  <h3 style= "position: absolute; top: 440px;">The date for today is:</h3>
+  <h3 style= "position: absolute; top: 440px;">The date for today is: {{month_result2}}/{{day_result2}}/{{year_result2}}</h3>
   <h2 style="position: absolute; top: 460px;">Calories Burned Goal</h2>
   <div class="form-group" style="position: absolute; top: 530px;">
     <label for="examplegoal2">Calories Burned Goal</label>
     <input type="number" name="goal2" class="form-control">
   </div>
-  <h3 style= "position: absolute; top: 550px;"> Your Calories Burned Goal is: </h3>
+  <h3 style= "position: absolute; top: 550px;"> Your Calories Burned Goal is: {{goal_result2}}</h3>
   <h2 style="position: absolute; top: 570px;">Calories Burned</h2>
   {% csrf_token %}
   <div class="form-group" style="position: absolute; top: 640px;">
@@ -97,7 +97,7 @@
   </div>
   <button type="submit" name="submit2" style="position: absolute; top: 900px;">Calculate</button>
 </form>
-<h3 style="position: absolute; top: 850px;">Your Total Calories Burned for today is:</h3>
+<h3 style="position: absolute; top: 850px;">Your Total Calories Burned for today is: {{cal_burned_result}}</h3>
 <br>
 <table class="right" style="width:25%; background-color: whitesmoke";>
   <tr>
