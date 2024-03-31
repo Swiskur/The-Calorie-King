@@ -35,17 +35,40 @@
 <form method="POST">
   {% csrf_token %}
   <div class="center">
-    <input type="text" name="query" placeholder="search for Activities" required>
+    <input type="text" name="burnerquery" placeholder="search for Activities" required>
     <button type="submit">Find Calories Burned</button>
   </div>
 
 </form>
   <li>
-    <ul class="center"> Calories per Hour:</ul>
-    <ul class="center"> Duration in Minutes:</ul>
-    <ul class="center"> Total Calories: </ul>
+    <ul class="center"> Calories per Hour: {{burnerapi.0.calories_per_hour}}</ul>
+    <ul class="center"> Duration in Minutes:  {{burnerapi.0.duration_minutes}}</ul>
+    <ul class="center"> Total Calories: {{burnerapi.0.total_calories}}</ul>
     
   </li>
+  <p>Welcome to the Burner Search Page. Here you will search the activity that you did and it will 
+    provide you with the data from that workout. The workout provides data based on calories burned per hour
+    making it easy to navigate and find your totals. For running, to help you find your true calories burned
+    here is a key for you to use when searching the calories burned! When you enter into the search bar,
+    put "running, # mph", but put your number instead of #!
+  </p>
+  <img src="https://as1.ftcdn.net/v2/jpg/02/26/50/62/1000_F_226506291_imi0vFPQCeAfGGXnqkv3YuvZrJnhrdcP.jpg" alt="Workout" class= "right" width="500" height="300">
+  <h3>
+    Running Key
+  </h3>
+  <ul>
+    <li>running, 5 mph = 12 min mile</li>
+    <li>running, 5.2 mph = 11.5 min mile</li>
+    <li>running, 6 mph = 10 min mile</li>
+    <li>running, 6.7 mph = 9 min mile</li>
+    <li>running, 7 mph = 8.5 min mile</li>
+    <li>running, 7.5 mph = 8 min mile</li>
+    <li>running, 8 mph = 7.5 min mile</li>
+    <li>running, 8.6 mph = 7 min mile</li>
+    <li>running, 9 mph = 6.5 min mile</li>
+    <li>running, 10 mph = 6 min mile</li>
+    <li>running, 10.9 mph = 5.5 min mile</li>
+  </ul>
   <script> 
     var quotes = [
     'Taking the stairs is an easy way to burn calories',

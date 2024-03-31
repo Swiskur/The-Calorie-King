@@ -53,6 +53,15 @@ def search(request):
     return render(request,'calorieking/search.html')
 
 def burner_search(request): 
+    if request.method == 'POST':
+        burnerquery = request.POST['burnerquery']
+        burner_api_url = 'https://api.api-ninjas.com/v1/caloriesburned?activity='
+        burner_api_request = requests.get(burner_api_url + burnerquery, headers = {'X-Api-Key': '/wVYm+vLvaIvkGtGtuQ3gw==vaHTrTLylDs0Xttx'})
+        try:
+            burnerapi = json.loads(burner_api_request.content)
+        except:
+            burnerapi = "Error"
+        return render(request, 'calorieking/burner_search.html', {'burnerapi': burnerapi,})
     return render(request, "calorieking/burner_search.html")
 def Goal(goal1):
     goal_result = int(float(goal1))
