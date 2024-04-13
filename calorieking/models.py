@@ -11,6 +11,15 @@ class ApiData(models.Model):
 
         return self.query, self.calories, self.carbs, self.protein
     
+class BurnerApi(models.Model):
+    burnerquery = models.CharField(max_length=200)
+    burnedcalories = models.IntegerField(default=0)
+    minutes = models.IntegerField(default=0)
+
+    def __str__(self):
+
+        return self.burnerquery, self.burnedcalories, self.minutes
+    
 class CalorieResult(models.Model):
     meal1 = models.IntegerField()
     meal2 = models.IntegerField()
@@ -32,7 +41,32 @@ class CalorieResult(models.Model):
     def year(self):
         return int(float(self.year1))
   
-    
+class BurnerResult(models.Model):
+    month2 = models.IntegerField(default=12)
+    day2 = models.IntegerField(default=1)
+    year2 = models.IntegerField(default=23)
+    goal2 = models.IntegerField()
+    burn1 = models.IntegerField()
+    burn2 = models.IntegerField()
+    burn3 = models.IntegerField()
+    burn4 = models.IntegerField()
+    burn5 = models.IntegerField()
+    burn6 = models.IntegerField()
+    burn7 = models.IntegerField()
+    burn8 = models.IntegerField()
+    burn9 = models.IntegerField()
+    burn10 = models.IntegerField()
+
+    def goalBurn(self):
+        return int(float(self.goal2))
+    def monthBurn(self):
+        return int(float(self.month2))
+    def dayBurn(self):
+        return int(float(self.day2))
+    def yearBurn(self):
+        return int(float(self.year2))
+    def burn_result(self):
+        return self.burn1 + self.burn2 + self.burn3 + self.burn4 + self.burn5 + self.burn6 + self.burn7 + self.burn8 + self.burn9 + self.burn10
 class Macros(models.Model):
     carb1 = models.IntegerField()
     carb2 = models.IntegerField()

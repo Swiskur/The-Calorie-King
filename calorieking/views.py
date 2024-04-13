@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 import requests
 import json
-from .models import CalorieResult, Macros, ApiData
+from .models import CalorieResult, Macros, ApiData, BurnerApi, BurnerResult
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
@@ -59,6 +59,12 @@ def burner_search(request):
         burner_api_request = requests.get(burner_api_url + burnerquery, headers = {'X-Api-Key': '/wVYm+vLvaIvkGtGtuQ3gw==vaHTrTLylDs0Xttx'})
         try:
             burnerapi = json.loads(burner_api_request.content)
+            BurnerApi.objects.create(
+                burnerquery=burnerquery,
+                burnedcalories = burnerapi[0].get('total_calories'),
+                minutes = burnerapi[0].get('duration_minutes'),
+            )
+
         except:
             burnerapi = "Error"
         return render(request, 'calorieking/burner_search.html', {'burnerapi': burnerapi,})
@@ -142,6 +148,7 @@ def CalBurnedAddition(burn1, burn2, burn3, burn4, burn5, burn6, burn7, burn8, bu
     cal_burned_result = int(burn1) + int(burn2) + int(burn3) + int(burn4) + int(burn5) + int(burn6) + int(burn7) + int(burn8) + int(burn9) + int(burn10)
     return cal_burned_result
 def burner_counter(request):
+    burner_data = BurnerApi.objects.all().order_by('-id')[:15]
     if request.method == 'POST':
         goal2 = request.POST['goal2']
         month2 = request.POST['month2']
@@ -163,8 +170,15 @@ def burner_counter(request):
             day_result2 = Day2(day2)
             year_result2 = Year2(year2)
             cal_burned_result = CalBurnedAddition(burn1, burn2, burn3, burn4, burn5, burn6, burn7, burn8, burn9, burn10)
+
+            burner_result = BurnerResult(
+                burn1=burn1, burn2=burn2, burn3=burn3, burn4=burn4,
+                burn5=burn5, burn6=burn6, burn7=burn7, burn8=burn8,
+                burn9=burn9, burn10=burn10, goal2=goal2, month2=month2, day2=day2, year2=year2
+            )
+            burner_result.save()
         return render(request, 'calorieking/burner_calculator.html', {'burner_goal_result':burner_goal_result, 'month_result2':month_result2, 'day_result2':day_result2, 'year_result2':year_result2, 'cal_burned_result':cal_burned_result,})
-    return render(request, "calorieking/burner_calculator.html")
+    return render(request, "calorieking/burner_calculator.html",{'burner_data': burner_data})
 @login_required(login_url='login')
 def results(request):
     calorie_results = CalorieResult.objects.all().order_by('-id')
@@ -172,6 +186,7 @@ def results(request):
     return render(request, "calorieking/results.html", {'calorie_results':calorie_results, 'macro_results':macro_results})
 @login_required(login_url='login')
 def burner_results(request):
-    return render(request, "calorieking/burner_results.html")
+    burner_result = BurnerResult.objects.all().order_by('-id')
+    return render(request, "calorieking/burner_results.html", {'burner_result': burner_result,})
 def contact(request):
     return render(request, "calorieking/contact.html")

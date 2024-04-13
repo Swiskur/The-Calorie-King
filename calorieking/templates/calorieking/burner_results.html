@@ -35,6 +35,15 @@
           <th class = "th">Date</th>
           
         </tr>
+        <tbody>
+          {% for result in burner_result %}
+            <tr>
+              <td class="td"> {{result.burn_result}}</td>
+              <td class="td"> {{result.goalBurn}}</td>
+              <td class="td"> {{result.monthBurn}}/{{result.dayBurn}}/{{result.yearBurn}}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
       </table>
       
 </body>

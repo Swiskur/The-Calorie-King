@@ -103,8 +103,18 @@
   <tr>
     <th class="th">Activity</th>
     <th class="th">Calories Burned</th>
+    <th class="th">Duration in Minutes</th>
     
   </tr>
+  <tbody>
+    {% for api_data in burner_data %}
+      <tr>
+        <td class="td"> Exercise: {{ api_data.burnerquery }}</td>
+        <td class="td"> Calories Burned: {{ api_data.burnedcalories }}</td>
+        <td class="td"> Duration in Minutes: {{api_data.minutes}}</td>
+      </tr>
+    {% endfor %}
+  </tbody>
 </table>
 <script> 
   var quotes = [
